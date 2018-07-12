@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=71e0169266ba7a0be8e34e6b7c003630695d7bab8a905384ddf681cb17f62b8e
+  - CC_TEST_REPORTER_ID=71e0169266ba7a0be8e34e6b7c003630695d7bab8a905384ddf681cb17f62b8e
 email:
   recipients:
   - jfrankenb@gmail.com
@@ -10,9 +10,10 @@ language: ruby
 rvm:
 - 2.3.1
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 branches:
   only: master
 install:
@@ -23,9 +24,9 @@ script:
 - bundle exec rspec
 - kill `cat rackup.pid`
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT 
-#deploy:
-#  provider: heroku
-#  app: playservice
-#  api_key:
-#    secure: aJflCi8OMOkcgVGOy6Je0Q
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+deploy:
+  provider: heroku
+  app: jonisplayservice
+  api_key:
+    secure: ozGUAGf/6EEE0VtCipUzcsfuBxHYnVKa2lVP5g3l3ba4BP7M1Y07eX/OMa5xqhhjPA8CI1meLTLqq3y3L0mEMKDcch6TpvKNDkJqf5N/bJCUQWxVp/QAkE63nWXiUdCd4YJvE+wGQfg5FStJBcbaRVZDBafGt+dqTlM5faG+lcGmUAtGt+BQOlCsZ2au4RBoyX/XqcF5KC+f5D8T+1P00Y66RnGxGsCCwN3EkSSTtsAep+ZHO5ElS1i8UM0wYQ0NrFToxVmQ6gL3NRH4QmMHFSat6tFRXfts4aQ5FEI4OmrmR7jC5nDeCFl31AxijNIpVdGgNmpkIDCYmFQ3ayj1xXZxhW+dQOQ0xtw63nSdm2A87vn+eHEZP2xv3j+2MMCApVe29CnM8SHiyyn8W7YJPDAU+XJYhQcu+r+q0a0BKp//nOSRplo4xG3CBdj2yEtyGrDEffSIm+CDkNiTp5p3ZypAA7TwTQJiP5kObKZYhBjkmfnenPivdTH+EKPd8lD3ejeeu3FZywu2jrrMk5ajXWGoy5jPU+8JKo91+OUyb3iPAorZRlYghfY6PWQ3UvTYPXsMoCFlIFWOm1OsB/So3qAJbjqKJZEusy2Pta14elDQ6c8I06h16iVzZQ5FmNA/UbtqSxJtcilqLFMRLwO1FSPq/2rY9piG6EhXWiS9t7w=
