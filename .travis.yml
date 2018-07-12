@@ -20,7 +20,7 @@ install:
 script:
 - export PLAY_URL=http://0.0.0.0:4567
 - rackup -P rackup.pid -p 4567 -o 0.0.0.0 &
-- rake integration
+- bundle exec rspec
 - kill `cat rackup.pid`
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
