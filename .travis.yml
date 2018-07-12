@@ -24,8 +24,8 @@ script:
 - kill `cat rackup.pid`
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT 
-deploy:
-  provider: heroku
-  app: playservice
-  api_key:
-    secure: aJflCi8OMOkcgVGOy6Je0Q
+#deploy:
+#  provider: heroku
+#  app: playservice
+#  api_key:
+#    secure: aJflCi8OMOkcgVGOy6Je0Q
